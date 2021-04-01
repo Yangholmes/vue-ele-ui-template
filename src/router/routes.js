@@ -6,7 +6,7 @@
 
 // 举例：
 const Home = () => import(
-    /* webpackChunkName: "Other" */
+    /* webpackChunkName: "Home" */
     '@/pages/home/Home.vue'
 );
 

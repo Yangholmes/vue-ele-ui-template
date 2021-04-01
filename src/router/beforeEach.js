@@ -12,21 +12,20 @@ import routes from './routes';
 export default (to, from, next) => {
     const token = getToken();
 
-    if (!token) {
+    if (1) {
         store.dispatch('user/getUserInfo').then(res => {
             const {data} = res;
             const {access} = data;
-            access.forEach(a => {
-                if (a.path === to.path) {
-                    const component = routes[a.component];
-                    a = Object.assign({}, a, {
-                        component
-                    });
-                    router.addRoute(a);
-                    console.log(a);
-                    next();
-                }
-            });
+            let r = access.find(a => a.path === to.path);
+            if (r) {
+                const component = routes[r.component];
+                r = Object.assign({}, r, {
+                    component
+                });
+                router.options.routes = [r];
+                router.addRoute(r);
+                next();
+            }
         });
     }
 

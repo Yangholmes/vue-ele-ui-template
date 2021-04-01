@@ -11,9 +11,9 @@ Mock.mock(/\/userapi\/api\/getUserInfo/, {
         token: 123456,
         access: [
             {
-                name: 'home',
-                path: '/',
-                component: 'Home'
+                name: 'other',
+                path: '/other',
+                component: 'Other'
             }
         ]
     },

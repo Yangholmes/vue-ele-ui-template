@@ -12,7 +12,11 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'history',
-    routes: []
+    routes: [{
+        name: 'home',
+        path: '/',
+        component: () => import('@/pages/home/Home.vue')
+    }]
 });
 
 router.beforeEach(beforeEach);
