@@ -4,6 +4,7 @@
  */
 
 const express = require('express');
+const history = require('connect-history-api-fallback');
 const webpack = require('webpack');
 const {merge} = require('webpack-merge');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -22,6 +23,8 @@ const config = merge(require('./webpack.config.js'), {
 
 const app = express();
 const compiler = webpack(config);
+
+app.use(history());
 
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.

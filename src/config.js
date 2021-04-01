@@ -3,13 +3,11 @@
  * @author Yangholmes 2021-04-01
  */
 
-export default {
-    tokenKey: 'token',
-    cookieExpires: 1,
+export const tokenKey = 'token';
+export const cookieExpires = 1;
 
-    baseUrl: {
-        user: {
-            development: '/userapi/api/'
-        }
+export const baseUrl = {
+    user: {
+        development: '/userapi/api/'
     }
 };

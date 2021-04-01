@@ -4,8 +4,8 @@
  */
 
 import HttpRequest from '@/drivers/http/axios';
-import config from '@/config';
+import {baseUrl} from '@/config';
 
-const baseUrl = process.env.NODE_ENV && config.baseUrl.user[process.env.NODE_ENV] || '/';
+const base = process.env.NODE_ENV && baseUrl.user[process.env.NODE_ENV] || '/';
 
-export default new HttpRequest(baseUrl);
+export default new HttpRequest(base);

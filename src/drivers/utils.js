@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 
 import {tokenKey, cookieExpires} from '@/config';
 
-export const setToken = (key = tokenKey, token) => {
+export const setToken = (token, key = tokenKey) => {
     Cookies.set(key, token, {expires: cookieExpires || 1});
 };
 

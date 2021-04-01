@@ -6,12 +6,28 @@
 import store from '@/store';
 import {getToken} from '@/drivers/utils';
 
+import router from './index';
+import routes from './routes';
+
 export default (to, from, next) => {
     const token = getToken();
 
-    store.dispatch('getUserInfo').then(res => {
-        const {data} = res;
-        const {access} = data;
+    if (!token) {
+        store.dispatch('user/getUserInfo').then(res => {
+            const {data} = res;
+            const {access} = data;
+            access.forEach(a => {
+                if (a.path === to.path) {
+                    const component = routes[a.component];
+                    a = Object.assign({}, a, {
+                        component
+                    });
+                    router.addRoute(a);
+                    console.log(a);
+                    next();
+                }
+            });
+        });
+    }
 
-    });
 };

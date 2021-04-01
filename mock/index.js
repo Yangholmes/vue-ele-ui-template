@@ -8,11 +8,12 @@ import Mock from 'mockjs';
 Mock.mock(/\/userapi\/api\/getUserInfo/, {
     code: 0,
     data: {
+        token: 123456,
         access: [
             {
-                "name": "home",
-                "path": "/",
-                "component": "Home"
+                name: 'home',
+                path: '/',
+                component: 'Home'
             }
         ]
     },
