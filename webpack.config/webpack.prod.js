@@ -13,7 +13,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const config = merge(require('./webpack.config.js'), {
     mode: 'production',
     output: {
-        publicPath: '/wechat-codecopy/'
+        publicPath: '/'
     },
     optimization: {
         moduleIds: 'deterministic',

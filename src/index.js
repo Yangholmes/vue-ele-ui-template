@@ -5,18 +5,23 @@
 
 
 import Vue from 'vue';
-import vueRouter from 'vue-router';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+import router from './router';
+import store from './store';
 import App from './App.vue';
 
 // 伪造接口
 import '/mock';
 
 Vue.use(ElementUI);
+
 const app = new Vue({
-    render: h => h(App)
+    render: h => h(App),
+    router,
+    store
 });
 
 app.$mount('#app');

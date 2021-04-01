@@ -3,8 +3,18 @@
  * @author Yangholmes 2021-03-31
  */
 
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-export default new VueRouter({
+import beforeEach from './beforeEach';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
     routes: []
 });
+
+router.beforeEach(beforeEach);
+
+export default router;

@@ -5,9 +5,11 @@
  */
 
 // 举例：
-// const Other = () => import(
-//     /* webpackChunkName: "Other" */
-//     '../components/Other.vue'
-// );
+const Home = () => import(
+    /* webpackChunkName: "Other" */
+    '@/pages/home/Home.vue'
+);
 
-export default {};
+export default {
+    Home
+};

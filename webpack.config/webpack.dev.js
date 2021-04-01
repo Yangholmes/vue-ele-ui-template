@@ -14,6 +14,7 @@ const portDetector = require('./portDetector');
 const config = merge(require('./webpack.config.js'), {
     mode: 'development',
     entry: ['webpack-hot-middleware/client'],
+    devtool: 'inline-source-map',
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]

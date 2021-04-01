@@ -5,7 +5,19 @@
 
 import Mock from 'mockjs';
 
-Mock.mock(/\/testapi/, 'success');
+Mock.mock(/\/userapi\/api\/getUserInfo/, {
+    code: 0,
+    data: {
+        access: [
+            {
+                "name": "home",
+                "path": "/",
+                "component": "Home"
+            }
+        ]
+    },
+    msg: 'success'
+});
 
 // Mock 模拟延时
 Mock.setup({

@@ -9,8 +9,8 @@
  * @return 过滤数据
  */
 export const filter = raw => {
-    const res = raw;
-    return res;
+    let {headers, status, data} = raw;
+    return data;
 };
 
 /**

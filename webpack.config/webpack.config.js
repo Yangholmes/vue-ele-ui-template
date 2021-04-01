@@ -14,7 +14,12 @@ module.exports = {
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '/'
     },
-    devtool: 'inline-source-map',
+    resolve: {
+        alias: {
+            root: path.resolve(__dirname, '../'),
+            '@': path.resolve(__dirname, '../src')
+        }
+    },
     module: {
         rules: [
             {

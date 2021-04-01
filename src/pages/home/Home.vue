@@ -1,15 +1,15 @@
 <template>
     <div>
-
+        Hello World!
     </div>
 </template>
 
 <script>
 export default {
-    mounted() {}
+
 };
 </script>
 
-<style lang="less">
+<style lang="">
 
 </style>
