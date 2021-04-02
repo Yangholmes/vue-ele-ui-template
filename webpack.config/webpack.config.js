@@ -11,6 +11,7 @@ module.exports = {
     entry: ['./src/index.js'],
     output: {
         filename: '[name].[contenthash].js',
+        chunkFilename: '[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '/'
     },

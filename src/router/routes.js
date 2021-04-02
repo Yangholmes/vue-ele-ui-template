@@ -6,10 +6,14 @@
 
 // 举例：
 const Home = () => import(
-    /* webpackChunkName: "Home" */
-    '@/pages/home/Home.vue'
+    /* webpackChunkName: "c/Home" */
+    '@/pages/home/Index.vue'
+);
+const Test = () => import(
+    /* webpackChunkName: "c/Test" */
+    '@/pages/test/Index.vue'
 );
 
 export default {
-    Home
+    Home, Test
 };

@@ -6,17 +6,23 @@
 export default {
     namespaced: true,
     state: () => ({
-        access: []
+        access: [],
+        router: []
     }),
     mutations: {
         updateAccess(state, access) {
             state.access = access.slice();
+        },
+        addRouter(state, route) {
+            state.router.push(route);
         }
     },
     actions: {
         updateAccess({commit}, access) {
             commit('updateAccess', access);
-            // console.log(access);
+        },
+        addRouter({commit}, route) {
+            commit('addRouter', route);
         }
     }
 };

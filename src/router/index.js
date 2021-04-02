@@ -13,9 +13,9 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     routes: [{
-        name: 'home',
-        path: '/',
-        component: () => import('@/pages/home/Home.vue')
+        name: 'test',
+        path: '/test',
+        component: () => import('@/pages/test/Index.vue')
     }]
 });
 
