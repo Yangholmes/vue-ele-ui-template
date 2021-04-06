@@ -15,14 +15,18 @@ export default {
         });
         const routes = await import('@/router/routes');
         let component = null;
+
+        // 开发环境，利用 router 表加载组件模块
         if (process.env.NODE_ENV === 'development') {
             component = routes.default[access.component];
             access = Object.assign({}, access, {
+                loaded: true,
                 component
             });
             this.$router.addRoute(access);
             this.$router.replace(access.path);
         }
+        // 生产环境，利用 __webpack_require__ 加载组件模块
         else {
             __webpack_require__.e(access.component).then(e => {
                 let moduleId = null;
@@ -33,6 +37,7 @@ export default {
                 }
                 component = __webpack_require__(moduleId).default;
                 access = Object.assign({}, access, {
+                    loaded: true,
                     component
                 });
                 this.$router.addRoute(access);

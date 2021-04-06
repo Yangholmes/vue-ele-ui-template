@@ -1,12 +1,13 @@
 <template>
     <div>
-        Hello World!
-        <router-view></router-view>
+        This is Page 1.
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+
+};
 </script>
 
 <style lang="">
