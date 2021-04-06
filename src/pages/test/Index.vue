@@ -8,11 +8,15 @@
 <script>
 export default {
     mounted: async function() {
-        let router = this.$store.state.app.router;
-        let access = this.$store.state.app.access[0];
+        const route = this.$route;
+        let access = this.$store.state.app.access.find(a => {
+            const toPath = route.query._toPath || '/';
+            return a.path === toPath
+        });
         const routes = await import('@/router/routes');
+        let component = null;
         if (process.env.NODE_ENV === 'development') {
-            const component = routes.default[access.component];
+            component = routes.default[access.component];
             access = Object.assign({}, access, {
                 component
             });
@@ -20,7 +24,20 @@ export default {
             this.$router.replace(access.path);
         }
         else {
-            // TODO
+            __webpack_require__.e(access.component).then(e => {
+                let moduleId = null;
+                for (let i = webpackJsonp.length - 1; i >= 0; i--) {
+                    if (webpackJsonp[i][0][0] === access.component) {
+                        moduleId = Object.keys(webpackJsonp[i][1])[0];
+                    }
+                }
+                component = __webpack_require__(moduleId).default;
+                access = Object.assign({}, access, {
+                    component
+                });
+                this.$router.addRoute(access);
+                this.$router.replace(access.path);
+            });
         }
     }
 };

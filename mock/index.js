@@ -14,6 +14,11 @@ Mock.mock(/\/userapi\/api\/getUserInfo/, {
                 name: 'home',
                 path: '/',
                 component: 'Home'
+            },
+            {
+                name: 'home',
+                path: '/home/home',
+                component: 'Home'
             }
         ]
     },

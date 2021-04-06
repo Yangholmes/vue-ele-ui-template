@@ -17,7 +17,13 @@ export default (to, from, next) => {
             if (to.name === 'test') {
                 next();
             }
-            next({name: 'test'});
+            next({
+                name: 'test',
+                meta: to.meta,
+                hash: to.hash,
+                params: to.params,
+                query: Object.assign({}, to.query, {_toPath: to.path})
+            });
         });
     }
     next();
