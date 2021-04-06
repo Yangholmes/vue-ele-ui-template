@@ -17,7 +17,6 @@ import App from './App.vue';
 import '/mock';
 
 Vue.use(ElementUI);
-
 const app = new Vue({
     render: h => h(App),
     router,
@@ -25,3 +24,5 @@ const app = new Vue({
 });
 
 app.$mount('#app');
+
+// console.log(router);

@@ -7,7 +7,9 @@
 
 <script>
 export default {
-    mounted() {}
+    mounted() {
+        console.log(this);
+    }
 };
 </script>
 

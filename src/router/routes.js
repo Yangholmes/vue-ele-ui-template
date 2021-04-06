@@ -19,5 +19,5 @@ const Test = () => import(
 );
 
 export default {
-    Home, Test
+    Home, Page1, Test
 };
