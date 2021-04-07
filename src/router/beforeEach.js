@@ -9,6 +9,9 @@ import {getToken} from '@/drivers/utils';
 import router from './index';
 
 export default (to, from, next) => {
+    // TODO
+    // 多层菜单查找
+    // 菜单缓存命中
     const token = getToken();
     if (!token) {
         store.dispatch('user/getUserInfo').then(async res => {
