@@ -10,8 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: ['./src/index.js'],
     output: {
-        filename: '[name].[contenthash].js',
-        chunkFilename: '[name].js',
+        filename: 'js/[name].[contenthash].js',
+        chunkFilename: 'js/[name].js',
         path: path.resolve(__dirname, '..', 'dist'),
         publicPath: '/'
     },
@@ -28,8 +28,12 @@ module.exports = {
                 loader: 'vue-loader'
             },
             {
+                test: /\.js$/,
+                loader: 'babel-loader'
+            },
+            {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
+                use: ['vue-style-loader', 'style-loader', 'css-loader']
             },
             {
                 test: /\.less$/,

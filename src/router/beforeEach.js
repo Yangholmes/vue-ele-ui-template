@@ -17,7 +17,11 @@ export default (to, from, next) => {
                 const toPath = route.path || '/';
                 return a.path === toPath
             });
-            const routes = await import('@/router/routes');
+            // 告知 webpack ，组件需要构建
+            const routes = await import(
+                /* webpackChunkName: "routes" */
+                '@/router/routes'
+            );
             let component = null;
 
             // 开发环境，利用 router 表加载组件模块
@@ -34,9 +38,9 @@ export default (to, from, next) => {
             else {
                 __webpack_require__.e(access.component).then(e => {
                     let moduleId = null;
-                    for (let i = webpackJsonp.length - 1; i >= 0; i--) {
-                        if (webpackJsonp[i][0][0] === access.component) {
-                            moduleId = Object.keys(webpackJsonp[i][1])[0];
+                    for (let i = webpackChunkMyLib.length - 1; i >= 0; i--) {
+                        if (webpackChunkMyLib[i][0][0] === access.component) {
+                            moduleId = Object.keys(webpackChunkMyLib[i][1])[0];
                         }
                     }
                     component = __webpack_require__(moduleId).default;

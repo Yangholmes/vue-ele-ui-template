@@ -6,15 +6,15 @@
 
 // 举例：
 const Home = () => import(
-    /* webpackChunkName: "c/Home" */
+    /* webpackChunkName: "Home" */
     '@/pages/home/Index.vue'
 );
 const Page1 = () => import(
-    /* webpackChunkName: "c/Page1" */
+    /* webpackChunkName: "Page1" */
     '@/pages/page1/Index.vue'
 );
 const Test = () => import(
-    /* webpackChunkName: "c/Test" */
+    /* webpackChunkName: "Test" */
     '@/pages/test/Index.vue'
 );
 

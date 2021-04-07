@@ -11,19 +11,19 @@ Mock.mock(/\/userapi\/api\/getUserInfo/, {
         token: 123456,
         access: [
             {
-                name: 'home1',
+                name: 'home',
                 path: '/',
-                component: 'Home1'
+                component: 'Home'
             },
             {
                 name: 'home',
                 path: '/home',
-                component: 'Page1',
-                // children: [{
-                //     name: 'page1',
-                //     path: '/home/page1',
-                //     component: 'Page1',
-                // }]
+                component: 'Home',
+                children: [{
+                    name: 'page1',
+                    path: '/home/page1',
+                    component: 'Page1',
+                }]
             }
         ]
     },

@@ -8,15 +8,16 @@ import VueRouter from 'vue-router';
 
 import beforeEach from './beforeEach';
 
+import {publicPath} from '@/config';
+
 Vue.use(VueRouter);
+
+const base = process.env.NODE_ENV === 'production' && publicPath || '/';
 
 const router = new VueRouter({
     mode: 'history',
-    routes: [{
-        name: 'test',
-        path: '/test',
-        component: () => import('@/pages/test/Index.vue')
-    }]
+    base,
+    routes: []
 });
 
 router.beforeEach(beforeEach);

@@ -37,7 +37,11 @@
     "webpack-merge": "^5.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "babel-loader": "^8.2.2",
     "mockjs": "^1.1.0",
+    "terser-webpack-plugin": "^5.1.1",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12"
   }

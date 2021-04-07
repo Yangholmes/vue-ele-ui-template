@@ -1,13 +1,17 @@
 /**
  * @file 项目配置
+ * @description 照顾构建工具，使用 CommonJS 模块
  * @author Yangholmes 2021-04-01
  */
 
-export const tokenKey = 'token';
-export const cookieExpires = 1;
+exports.publicPath = '/new-access/';
 
-export const baseUrl = {
+exports.tokenKey = 'token';
+exports.cookieExpires = 1;
+
+exports.baseUrl = {
     user: {
-        development: '/userapi/api/'
+        development: '/userapi/api/',
+        production: '/new-access/api/'
     }
 };

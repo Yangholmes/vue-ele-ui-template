@@ -9,24 +9,45 @@ const {merge} = require('webpack-merge');
 
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
+const TerserPlugin = require("terser-webpack-plugin");
+
+const {publicPath} = require('../src/config');
+
 // merge config
 const config = merge(require('./webpack.config.js'), {
     mode: 'production',
     output: {
-        publicPath: '/'
+        publicPath: publicPath || '/',
+        library: {
+            name: 'MyLib',
+            type: 'umd',
+        }
     },
     optimization: {
+        chunkIds: 'named',
         moduleIds: 'deterministic',
         runtimeChunk: 'single',
         splitChunks: {
             cacheGroups: {
-                vendor: {
+                vendors: {
+                    name: 'chunk-vendors',
                     test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
+                    priority: -10,
+                    chunks: 'initial'
+                },
+                common: {
+                    name: 'chunk-common',
+                    minChunks: 2,
+                    priority: -20,
+                    chunks: 'initial',
+                    reuseExistingChunk: true
                 }
             }
-        }
+        },
+        minimize: true,
+        minimizer: [
+            new TerserPlugin()
+        ]
     },
     plugins: [
         new CleanWebpackPlugin({
