@@ -6,6 +6,7 @@
 export default {
     namespaced: true,
     state: () => ({
+        accessUpdated: false,
         access: [],
         router: []
     }),
