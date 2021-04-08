@@ -4,9 +4,15 @@
  */
 
 import store from '@/store';
-import {getToken} from '@/drivers/utils';
+import {getToken, parsePath} from '@/drivers/utils';
 
 import router from './index';
+
+function compare(access = [], paths = []) {
+    let tmp = access;
+    let path = paths.unshift();
+    tmp = tmp.find(a => a.path === path);
+}
 
 export default async (to, from, next) => {
     const {path, matched} = to;
@@ -23,19 +29,16 @@ export default async (to, from, next) => {
     }
     else if (!token || !store.state.accessUpdated) {
         await store.dispatch('user/getUserInfo');
-        // .then(res => {
-        //     // next();
-        // }).catch(err => {
-        //     // jump to auth
-        // });
     }
     // else {
-    const paths = path.replace(/\//g, '#/').split('#');
-    paths.shift();
-    let access = store.state.app.access;
+    const paths = parsePath(path);
+
+    let access = compare(store.state.app.access, paths);
+
     let tmp = access;
+    console.log(paths);
     for (let i = 0; i < paths.length; i++) {
-        console.log(paths[i]);
+        console.log(tmp, paths[i]);
         tmp = tmp.find(a => a.path === paths[i]);
         console.log(tmp);
         if (!tmp) {}
@@ -45,8 +48,8 @@ export default async (to, from, next) => {
             component
         });
         console.log(tmp);
-        router.addRoute(tmp);
-        tmp = tmp.childern || [];
+        // router.addRoute(tmp);
+        tmp = tmp.children || [];
     }
     console.log(access);
     // }
