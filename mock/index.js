@@ -32,7 +32,7 @@ Mock.mock(/\/userapi\/api\/getUserInfo/, {
 
 // Mock 模拟延时
 Mock.setup({
-    timeout: Math.random() * 5e3
+    timeout: Math.random() * 2e3
 });
 
 export default Mock;
