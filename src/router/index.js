@@ -20,7 +20,7 @@ const router = new VueRouter({
     routes: [{
         path: '/404',
         name: '404',
-        component: () => import('@/pages/error/404.vue')
+        component: () => import(/* webpackChunkName: "404" */'@/pages/error/404.vue')
     }]
 });
 
