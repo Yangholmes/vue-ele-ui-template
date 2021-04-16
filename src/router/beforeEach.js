@@ -18,7 +18,7 @@ let routes = [];
  * @param {Array} access 权限树
  * @param {Array} paths 路由
  * @param {string} parentName 父路由名称
- * @returns {boolean|Array}
+ * @return {boolean|Array} access
  */
 function compare(access = [], paths = [], parentName = null) {
     if (!paths.length || !access.length) {
@@ -42,6 +42,10 @@ function compare(access = [], paths = [], parentName = null) {
 
 /**
  * 路由守卫钩子
+ *
+ * @param {Object} to 下一跳
+ * @param {Object} from 上一跳
+ * @param {Function} next 进入下一条
  */
 export default async (to, from, next) => {
     const {path, matched} = to;

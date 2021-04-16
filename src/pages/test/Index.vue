@@ -1,4 +1,3 @@
-<!-- 跳板页 -->
 <template>
     <div>
         Test
